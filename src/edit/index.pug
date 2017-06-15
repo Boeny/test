@@ -1,0 +1,20 @@
+mixin group(name, title, type)
+	.group
+		if (title)
+			.label
+				label(for=name)=title
+		
+		input(id=name name=name type=type || 'text')
+
+.edit_container
+	.title Настройки
+	
+	form#edit_form
+		+group('id', '', 'hidden')
+		+group('name', 'Название')
+		+group('author', 'Автор')
+		+group('publish_year', 'Год издания')
+		+group('page_count', 'Кол-во страниц', 'number')
+		
+		.center
+			button#save_btn.btn(type='submit') Сохранить

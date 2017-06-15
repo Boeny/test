@@ -1,0 +1,17 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		
+		for s in ['main.css']
+			link(rel="stylesheet" type="text/css" href=s)
+		
+	body
+		.container
+			include edit/index
+			include list/index
+		
+		for s in ['https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', 'bundle.js']
+			script(src=s)

@@ -1,0 +1,41 @@
+.edit_container {
+	position: relative;
+	padding: 16px;
+	.bordered;
+	
+	@media (min-width: @big_phone) {
+		width: @big_phone - 2*32px;
+	}
+	
+	@offset: 4px;
+	
+	.title {
+		padding: 0 @offset;
+		margin-left: -@offset;
+		position: absolute;
+		top: -10px;
+		background: #fff;
+	}
+	
+	.group {
+		margin-bottom: 12px;
+		
+		.label {
+			margin-bottom: 6px;
+		}
+		input {
+			width: 108px;
+			height: 2em;
+			padding-left: 0.3em;
+			.bordered;
+		}
+		input[name="page_count"] {
+			width: 48px;
+		}
+	}
+	
+	#save_btn {
+		padding: 0.3em 1em;
+		.center
+	}
+}

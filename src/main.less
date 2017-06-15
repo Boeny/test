@@ -1,0 +1,42 @@
+* {
+	box-sizing: border-box;
+}
+
+@black: #333;
+@big_phone: 350px;
+
+body {
+	margin: 0;
+	font: normal 14px 'Arial';
+	width: 100%;
+	color: @black;
+}
+
+.container {
+	padding: 24px;
+	
+	@media (min-width: @big_phone) {
+		padding: 32px;
+	}
+}
+
+.bordered {
+	border: 2px solid @black;
+	border-radius: 2px;
+}
+.btn {
+	font-size: 14px;
+	background: #fff;
+	box-shadow: 3px 2px @black;
+	.bordered;
+}
+.btn:active {
+	box-shadow: 2px 1px @black;
+	margin: 1px 0 -1px 1px;
+}
+.center {
+	text-align: center;
+}
+
+@import "./edit/index.less";
+@import "./list/index.less";

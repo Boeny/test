@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "dependencies": {
+    "less": "^2.7.2",
+    "pug": "^2.0.0-rc.2",
+    "webpack": "^2.6.1"
+  },
+  "scripts": {
+    "build": "node build && webpack"
+  }
+}
