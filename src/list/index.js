@@ -2,13 +2,13 @@ var list = {
 	storage: null,
 	
 	getObject: function(id){
-		return JSON.parse(this.storage[id]);
+		return JSON.parse(this.storage.getItem(id));
 	},
-	addObject: function(){
+	addObject: function(obj){
 		
 	},
-	updateObject: function(){
-		
+	updateObject: function(obj){
+		this.setItem()
 	},
 	deleteObject: function(id){
 		this.storage.removeItem(id);
