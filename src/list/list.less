@@ -1,0 +1,23 @@
+.delay {
+	transition: opacity .3s;
+}
+
+#list {
+	.item {
+		opacity: 0;
+		width: 200px;
+		height: 150px;
+		.delay;
+		.bordered;
+		
+		.btn {
+			.delay;
+		}
+	}
+	.item:hover {
+		background: #ccc;
+	}
+	.item.shown, .item:hover .btn {
+		opacity: 1;
+	}
+}

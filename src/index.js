@@ -1,22 +1,30 @@
+require('./base/index');
+
 $(function(){
-	var strg = window.localStorage;
-	var edit_window = require('./edit/index.js')();
-	var list = require('./list/index.js')(strg);
+	var edit_window = require('./edit/index.js');
+	var list = require('./list/index.js')(window.localStorage);
 	
-	$(window).on('edit', function(e, obj){
+	list.onEdit = function(obj){
 		edit_window.setObject(obj);
-	});
+	};
 	
-	$(window).on('save', function(e, obj){
+	edit_window.onSave = function(obj){
+		var error;
+		
+		for (var f in obj)
+		{
+			error = edit_window.checkForErrors(f, obj[f]);
+			if (error){
+				edit_window.showError(error);
+				return;
+			}
+		}
+		
 		if (obj.id){
 			list.updateObject(obj);
 		}
 		else{
 			list.addObject(obj);
 		}
-	});
-	
-	$(window).on('delete', function(e, id){
-		list.deleteObject(id);
-	});
+	};
 });

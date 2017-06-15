@@ -4,14 +4,14 @@ mixin group(name, title, type)
 			.label
 				label(for=name)=title
 		
-		input(id=name name=name type=type || 'text')
+		input(id=name class="bordered" name=name type=type || 'text')
 
 .edit_container
 	.title Настройки
 	
 	form#edit_form
 		+group('id', '', 'hidden')
-		+group('name', 'Название')
+		+group('title', 'Название')
 		+group('author', 'Автор')
 		+group('publish_year', 'Год издания')
 		+group('page_count', 'Кол-во страниц', 'number')

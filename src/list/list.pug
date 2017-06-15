@@ -1,0 +1,14 @@
+#list
+
+template#list_item_template
+	.item(data-id!='{id}')
+		.group
+			.title!='{title}'
+		
+		.group
+			span Автор:
+			span!='{author}'
+		
+		.group
+			button.edit_btn.btn Edit
+			button.del_btn.btn Del
