@@ -1,5 +1,5 @@
 # test
-a library with sortable and searchable books, holding in the localStorage.
+a library with sortable and searchable books, holding at the localStorage.
 
 to build the project (uglified):
 
