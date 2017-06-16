@@ -30,30 +30,30 @@ var edit_form = {
 		
 		if (!v) return 'Поле не должно быть пустым!';
 		
-		if (f == 'publish_year' || f == 'page_count') && this.hasLiters(v))
+		if ((f == 'publish_year' || f == 'page_count') && this.hasLiters(v))
 			return 'Поле должно содержать только цифры!';
 		
-		if (f == 'publish_year' && v > (new Date()).getYear())
+		if (f == 'publish_year' && v > (new Date()).getFullYear())
 			return 'Этот год еще не наступил!';
 		
 		return null;
 	},
 	hasLiters: function(v){
-		return v.replace(/[\d]/, '');
+		return v.replace(/\d/g, '');
 	},
-	showError: function(error){
-		alert(error);
-		
-		var elem = edit_window.getElement(f);
-		elem.focus();
-		
-		Blink({// from base/index.js
-			ms: 1500,
-			count: 1,
-			actions: [
-				function(){elem.addClass('alerted')},
-				function(){elem.removeClass('alerted')}
-			]
+	showError: function(error, field){
+		alert(error, function(){
+			var elem = edit_form.getElement(field);
+			elem.focus();
+			
+			Blink({// from base/index.js
+				ms: 2000,
+				count: 1,
+				actions: [
+					function(){elem.addClass('alerted')},
+					function(){elem.removeClass('alerted')}
+				]
+			});
 		});
 	},
 	

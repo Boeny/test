@@ -1,12 +1,19 @@
-var view = require('./view')('#list', $('#list_item_template'));
+var view = require('./view')('#list', '#list_item_template');
 var storage;
 var lastId = 0;
 
 var list = {
 	init: function(){
-		for (var i=0; i<storage.length; i++){
-			view.addObject( this.getObject( storage.key(i) ) );
+		var maxId = 0;
+		var id;
+		
+		for (var i = 0; i < storage.length; i++){
+			id = storage.key(i);
+			if (maxId < +id) maxId = +id;
+			view.addObject( this.getObject(id) );
 		}
+		// restoring a lastId from an other session
+		lastId = maxId;
 	},
 	
 	getLastId: function(){
@@ -33,6 +40,7 @@ var list = {
 	},
 	
 	onEdit: function(obj){},
+	onStopEdit: function(){},
 	onDelete: function(id){
 		confirm('Вы уверены, что хотите удалить эту книгу?', function(){
 			list.deleteObject(id);
@@ -41,7 +49,16 @@ var list = {
 };
 
 $(document).on('click', '.edit_btn', function(){
-	list.onEdit( list.getObject( view.getId(this) ) );
+	var id = view.getId(this);
+	
+	if (view.isHovered(id)){
+		view.setUnhovered(id);
+		list.onStopEdit();
+	}else{
+		view.setHovered(id);
+		list.onEdit( list.getObject(id) );
+	}
+	
 	return false;
 });
 

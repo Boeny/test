@@ -10,8 +10,10 @@ html
 		
 	body
 		.container
-			include edit/index
-			include list/index
+			include edit/edit
+			include list/list
+		
+		include base/base
 		
 		for s in ['https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', 'bundle.js']
 			script(src=s)

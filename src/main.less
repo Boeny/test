@@ -11,7 +11,6 @@ body {
 	width: 100%;
 	color: @black;
 }
-
 .container {
 	padding: 24px;
 	
@@ -19,24 +18,60 @@ body {
 		padding: 32px;
 	}
 }
-
-.bordered {
-	border: 2px solid @black;
-	border-radius: 2px;
+.block {
+	padding: 16px;
+	.bordered;
 }
+
+.center {
+	text-align: center;
+}
+.pointer {
+	cursor: pointer;
+}
+.noscroll {
+	overflow: hidden;
+}
+.pull-left {
+	float: left;
+}
+.pull-right {
+	float: right;
+}
+
 .btn {
 	font-size: 14px;
 	background: #fff;
 	box-shadow: 3px 2px @black;
+	padding: 0.3em 1em;
+	.pointer;
+	.center;
 	.bordered;
 }
 .btn:active {
 	box-shadow: 2px 1px @black;
 	margin: 1px 0 -1px 1px;
 }
-.center {
-	text-align: center;
+
+.btns {
+	position: absolute;
+	width: 100%;
+	bottom: 16px;
+	left: 0;
+	
+	.pull-left, .pull-right {
+		width: 50%;
+	}
+	.pull-left {
+		text-align: right;
+		padding-right: 5px;
+	}
+	.pull-right {
+		text-align: left;
+		padding-left: 5px;
+	}
 }
+
 .fixed {
 	position: fixed;
 	z-index: 1;
@@ -46,5 +81,20 @@ body {
 	left: 50%;
 }
 
-@import "./edit/index.less";
-@import "./list/index.less";
+.hidden {
+	display: none;
+}
+.delay {
+	transition: opacity .3s;
+}
+.bordered {
+	border: 2px solid @black;
+	border-radius: 2px;
+}
+.shown {
+	opacity: 1;
+}
+
+@import "./base/base.less";
+@import "./edit/edit.less";
+@import "./list/list.less";

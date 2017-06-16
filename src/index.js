@@ -1,11 +1,15 @@
-require('./base/index');
+require('./base/base');
 
 $(function(){
-	var edit_window = require('./edit/index.js');
-	var list = require('./list/index.js')(window.localStorage);
+	var edit_window = require('./edit/edit');
+	var list = require('./list/list')(window.localStorage);
 	
 	list.onEdit = function(obj){
 		edit_window.setObject(obj);
+	};
+	
+	list.onStopEdit = function(){
+		edit_window.setObject({});
 	};
 	
 	edit_window.onSave = function(obj){
@@ -15,7 +19,7 @@ $(function(){
 		{
 			error = edit_window.checkForErrors(f, obj[f]);
 			if (error){
-				edit_window.showError(error);
+				edit_window.showError(error, f);
 				return;
 			}
 		}

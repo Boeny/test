@@ -1,23 +1,40 @@
-.delay {
-	transition: opacity .3s;
-}
-
 #list {
 	.item {
+		position: relative;
+		margin-top: 16px;
 		opacity: 0;
-		width: 200px;
 		height: 150px;
+		.pointer;
 		.delay;
-		.bordered;
+		.block;
+		
+		.group {
+			margin-bottom: 6px;
+		}
+		
+		.tab {
+			margin-left: 0.5em;
+		}
 		
 		.btn {
+			opacity: 0;
 			.delay;
 		}
+		.edit_btn {
+			width: 35px;
+			height: 39px;
+			background: data-uri('./edit.png');
+		}
+		.del_btn {
+			width: 35px;
+			height: 39px;
+			background: data-uri('./del.png');
+		}
 	}
-	.item:hover {
+	.item:hover, .item.hovered {
 		background: #ccc;
 	}
-	.item.shown, .item:hover .btn {
-		opacity: 1;
+	.item.shown, .item:hover .btn, .item.hovered .btn {
+		.shown;
 	}
 }

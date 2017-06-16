@@ -7,8 +7,10 @@ template#list_item_template
 		
 		.group
 			span Автор:
-			span!='{author}'
+			span.tab!='{author}'
 		
-		.group
-			button.edit_btn.btn Edit
-			button.del_btn.btn Del
+		.btns
+			.pull-left
+				.edit_btn.btn Edit
+			.pull-right
+				.del_btn.btn Del
