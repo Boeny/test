@@ -33,10 +33,11 @@ $(function(){
 			}
 		}
 		
-		if (obj.id){
+		if (+obj.id){
 			list.updateObject(obj);
 		}
 		else{
+			edit_window.clear();
 			list.addObject(obj);
 		}
 	};

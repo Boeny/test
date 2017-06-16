@@ -33,10 +33,19 @@ body {
 @import "./base/blocks.less";
 
 .block-left-offset-desktop {
+	position: relative;
 	margin-left: 0;
 	
 	@media (min-width: @desktop) {
 		margin-left: @edit-width + @block-margin-desktop;
+	}
+}
+@media (min-width: @tablet) and (max-width: @desktop) {
+	.modules {
+		position: absolute;
+		bottom: 0;
+		left: 307px;
+		width: 35%;
 	}
 }
 
