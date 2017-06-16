@@ -13,6 +13,17 @@ var view = {
 		
 		return result;
 	},
+	renderAll: function(arr){
+		this.clear();
+		
+		for (var i = 0; i < arr.length; i++){
+			this.addObject(arr[i]);
+		}
+	},
+	clear: function(content){
+		this.root.html(content || '');
+	},
+	
 	getElement: function(id){
 		return this.root.find('[data-id="'+id+'"]');
 	},
@@ -27,10 +38,12 @@ var view = {
 	},
 	updateObject: function(obj){
 		this.getElement(obj.id).replaceWith(this.render(obj));// new element
-		this.getElement(obj.id).addClass('shown');// hence we need to find it again
+		var elem = this.getElement(obj.id);// hence we need to find it again
+		elem.addClass('shown hovered');
+		this.hovered = elem;
 	},
 	deleteObject: function(id){
-		hideElement(this.getElement(id), true);// remove. from base/index.js
+		hideElement(this.getElement(id), true);// remove. from base/base.js
 	},
 	
 	isHovered: function(id){

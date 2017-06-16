@@ -11,9 +11,15 @@ html
 	body
 		.container
 			include edit/edit
-			include list/list
+			
+			.block-left-offset-desktop
+				div
+					include sort/sort
+					include search/search
+				
+				include list/list
 		
-		include base/base
+		include modals/modals
 		
 		for s in ['https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', 'bundle.js']
 			script(src=s)

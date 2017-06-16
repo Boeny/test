@@ -1,0 +1,50 @@
+@import "./base/base.less";
+
+* {
+	box-sizing: border-box;
+}
+
+input {
+	height: 2em;
+	padding-left: 0.3em;
+	.bordered;
+}
+
+body {
+	margin: 0;
+	font: normal 14px 'Arial';
+	width: 100%;
+	color: @black;
+}
+
+@container-padding: 24px;
+@container-padding-desktop: 32px;
+
+.container {
+	padding: @container-padding;
+	
+	@media (min-width: @big_phone) {
+		padding: @container-padding-desktop;
+	}
+}
+
+@edit-width: @big_phone - 2*@container-padding-desktop;
+
+@import "./base/blocks.less";
+
+.block-left-offset-desktop {
+	margin-left: 0;
+	
+	@media (min-width: @desktop) {
+		margin-left: @edit-width + @block-margin-desktop;
+	}
+}
+
+@import "./base/buttons.less";
+@import "./modals/modals.less";
+
+@import "./sort/sort.less";
+@import "./search/search.less";
+
+@import "./edit/edit.less";
+@import "./list/list.less";

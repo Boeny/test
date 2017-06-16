@@ -1,12 +1,35 @@
+// the paths of the images is taken relative to the main.less
+.img-btn {
+	.delay;
+	opacity: 0;
+	width: 39px;
+	height: 43px;
+	display: inline-block;
+}
+
 #list {
 	.item {
-		position: relative;
-		margin-top: 16px;
 		opacity: 0;
-		height: 150px;
+		height: 136px;
 		.pointer;
 		.delay;
 		.block;
+		.block-top;
+		
+		@media (min-width: @big_phone) {
+			width: @edit-width;
+		}
+		@media (min-width: @tablet) {
+			width: 46%;
+			float: left;
+			.block-right;
+		}
+		@media (min-width: @desktop) {
+			width: 230px;
+			margin-top: 0;
+			.block-right-desktop;
+			.block-bottom-desktop;
+		}
 		
 		.group {
 			margin-bottom: 6px;
@@ -16,19 +39,23 @@
 			margin-left: 0.5em;
 		}
 		
-		.btn {
-			opacity: 0;
-			.delay;
-		}
-		.edit_btn {
-			width: 35px;
-			height: 39px;
-			background: data-uri('./edit.png');
-		}
-		.del_btn {
-			width: 35px;
-			height: 39px;
-			background: data-uri('./del.png');
+		.btns {
+			@media (min-width: @tablet) {
+				.pull-left {
+					width: 32%;
+				}
+				.pull-right{
+					width: 64%;
+				}
+			}
+			.edit_btn {
+				.img-btn;
+				background-image: data-uri('image/png;base64', 'list/img/edit.png');
+			}
+			.del_btn {
+				.img-btn;
+				background-image: data-uri('image/png;base64', 'list/img/del.png');
+			}
 		}
 	}
 	.item:hover, .item.hovered {

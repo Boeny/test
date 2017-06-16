@@ -6,6 +6,7 @@
     "webpack": "^2.6.1"
   },
   "scripts": {
-    "build": "node build && webpack"
+    "build": "node build && webpack",
+	"devbuild": "node build --dev && webpack"
   }
 }

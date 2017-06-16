@@ -1,35 +1,44 @@
-#overlay {
-	.hidden;
-	.fixed;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,.2);
+@black: #333;
+@big_phone: 350px;
+@tablet: 512px;
+@desktop: 768px;
+
+.center {
+	text-align: center;
+}
+.pointer {
+	cursor: pointer;
+}
+.noscroll {
+	overflow: hidden;
 }
 
-#alert, #confirm {
-	width: 280px;
-	margin-left: -140px;
-	height: 160px;
-	margin-top: -80px;
-	padding: 20px 36px;
-	background: #fff;
-	opacity: 0;
-	.hidden;
-	.delay;
-	.bordered;
-	
-	.btns {
-		.pull-left {
-			width: 45%;
-		}
-		.pull-right {
-			width: 55%;
-		}
-	}
+.pull-left {
+	float: left;
 }
-#alert.shown, #confirm.shown, #overlay.shown {
-	.shown;
+.pull-right {
+	float: right;
+}
+
+.fixed {
+	position: fixed;
+	z-index: 1;
+}
+.fixed.middle {
+	top: 50%;
+	left: 50%;
+}
+
+.hidden {
+	display: none;
+}
+.delay {
+	transition: opacity .3s;
+}
+.bordered {
+	border: 2px solid @black;
+	border-radius: 2px;
+}
+.shown {
+	opacity: 1;
 }

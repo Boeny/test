@@ -7,7 +7,7 @@ mixin group(name, title, type)
 		input(id=name class="bordered" name=name type=type || 'text')
 
 .edit_container
-	.title Настройки
+	.block-title Настройки
 	
 	form#edit_form
 		+group('id', '', 'hidden')
@@ -16,5 +16,5 @@ mixin group(name, title, type)
 		+group('publish_year', 'Год издания')
 		+group('page_count', 'Кол-во страниц', 'number')
 		
-		.center
+		.btns.center
 			button#save_btn.btn(type='submit') Сохранить

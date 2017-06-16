@@ -1,4 +1,4 @@
 module.exports = {
 	filename: 'main.css',
-	filesource: 'src/main.less'
+	filesource: 'src/style.less'
 };

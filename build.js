@@ -2,7 +2,7 @@ const preproc = ['pug','less'];
 const destination = './public/';
 const fs = require('fs');
 
-try{
+try{// check if the destination folder exists
 	fs.statSync(destination);
 }catch(err){
 	fs.mkdirSync(destination);

@@ -1,0 +1,43 @@
+@block-margin: 16px;
+@block-margin-desktop: 40px;
+
+.block {
+	position: relative;
+	padding: @block-margin;
+	.bordered;
+}
+
+.block-right {
+	margin-right: @block-margin;
+}
+.block-left {
+	margin-left: @block-margin;
+}
+.block-top {
+	margin-top: @block-margin;
+}
+.block-bottom {
+	margin-bottom: @block-margin;
+}
+.block-right-desktop {
+	margin-right: @block-margin-desktop;
+}
+.block-left-desktop {
+	margin-left: @block-margin-desktop;
+}
+.block-top-desktop {
+	margin-top: @block-margin-desktop;
+}
+.block-bottom-desktop {
+	margin-bottom: @block-margin-desktop - 10px;
+}
+
+@offset: 4px;
+
+.block-title {
+	padding: 0 @offset;
+	margin-left: -@offset;
+	position: absolute;
+	top: -10px;
+	background: #fff;
+}

@@ -1,15 +1,24 @@
 require('./base/base');
+require('./modals/modals');
 
 $(function(){
 	var edit_window = require('./edit/edit');
-	var list = require('./list/list')(window.localStorage);
+	var filter = require('./sort/sort');
+	var list = require('./list/list')(window.localStorage, filter);
 	
 	list.onEdit = function(obj){
 		edit_window.setObject(obj);
 	};
 	
 	list.onStopEdit = function(){
-		edit_window.setObject({});
+		edit_window.clear();
+	};
+	
+	list.onDelete = function(id){
+		confirm('Вы уверены, что хотите удалить эту книгу?', function(){
+			edit_window.clear();
+			list.deleteObject(id);
+		});
 	};
 	
 	edit_window.onSave = function(obj){
@@ -30,5 +39,12 @@ $(function(){
 		else{
 			list.addObject(obj);
 		}
+	};
+	
+	var search = require('./search/search')(window.localStorage, filter);
+	
+	search.onKeyUp = function(phrase){
+		edit_window.clear();
+		list.render( search.getObjects(phrase) );
 	};
 });

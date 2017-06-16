@@ -5,24 +5,42 @@ var lastId = 0;
 var list = {
 	init: function(){
 		var maxId = 0;
-		var id;
+		var id, objects = this.getObjects();
 		
-		for (var i = 0; i < storage.length; i++){
-			id = storage.key(i);
-			if (maxId < +id) maxId = +id;
+		for (var i = 0; i < objects.length; i++){
+			id = +objects[i].id;
+			if (maxId < id) maxId = id;
 			view.addObject( this.getObject(id) );
 		}
-		// restoring a lastId from an other session
+		// restoring lastId from other session
 		lastId = maxId;
+	},
+	
+	render: function(arr){
+		if (!arr || typeof arr !== 'object')
+			view.clear(arr);
+		else
+			view.renderAll(arr);
 	},
 	
 	getLastId: function(){
 		return lastId;
 	},
 	
+	getObjects: function(){
+		var result = [];
+		
+		for (var i = 0; i < storage.length; i++){
+			result.push(this.getObject(storage.key(i)));
+		}
+		
+		if (this.filter) this.filter(result);
+		return result;
+	},
 	getObject: function(id){
 		return JSON.parse(storage.getItem(id));
 	},
+	
 	addObject: function(obj){
 		lastId++;
 		obj.id = lastId;
@@ -41,11 +59,7 @@ var list = {
 	
 	onEdit: function(obj){},
 	onStopEdit: function(){},
-	onDelete: function(id){
-		confirm('Вы уверены, что хотите удалить эту книгу?', function(){
-			list.deleteObject(id);
-		});
-	}
+	onDelete: function(id){}
 };
 
 $(document).on('click', '.edit_btn', function(){
@@ -67,9 +81,11 @@ $(document).on('click', '.del_btn', function(){
 	return false;
 });
 
-module.exports = function(_storage){
+module.exports = function(_storage, filter){
 	if (!_storage || typeof _storage != 'object') throw Error('list needs a storage object!');
 	storage = _storage;
+	
+	list.filter = filter;
 	list.init();
 	return list;
 };
