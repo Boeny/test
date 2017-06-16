@@ -7,12 +7,13 @@ var sort = {
 		});
 	},
 	
-	onClick: function(){}
+	onChange: function(){}
 };
 
-$(document).on('click', '#sort input', function(){
+$(document).on('change', '#sort input', function(){
+	console.log('!');
 	sort_field = $(this).val();
-	sort.onClick();
+	sort.onChange();
 });
 
 module.exports = sort;

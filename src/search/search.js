@@ -21,7 +21,14 @@ var search = {
 	},
 	
 	onKeyDown: function(){},
-	onKeyUp: function(){}
+	onKeyUp: function(){},
+	
+	keyUp: function(){
+		search.onKeyUp($('#search input').val());
+	},
+	keyDown: function(){
+		search.onKeyDown($('#search input').val());
+	}
 }
 
 $(document).on('keydown', '#search input', function(e){

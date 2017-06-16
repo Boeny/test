@@ -3,8 +3,8 @@ require('./modals/modals');
 
 $(function(){
 	var edit_window = require('./edit/edit');
-	var filter = require('./sort/sort');
-	var list = require('./list/list')(window.localStorage, filter);
+	var sort = require('./sort/sort');
+	var list = require('./list/list')(window.localStorage, sort.filter);
 	
 	list.onEdit = function(obj){
 		edit_window.setObject(obj);
@@ -41,10 +41,14 @@ $(function(){
 		}
 	};
 	
-	var search = require('./search/search')(window.localStorage, filter);
+	var search = require('./search/search')(window.localStorage, sort.filter);
 	
 	search.onKeyUp = function(phrase){
 		edit_window.clear();
 		list.render( search.getObjects(phrase) );
+	};
+	
+	sort.onChange = function(){
+		search.keyUp();
 	};
 });
