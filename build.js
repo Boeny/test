@@ -8,6 +8,8 @@ try{// check if the destination folder exists
 	fs.mkdirSync(destination);
 }
 
+const uglify = !process.argv[2];
+
 for (let i in preproc){
-	require('./'+preproc[i]+'/index')(destination);
+	require('./'+preproc[i]+'/index')(destination, uglify);
 }

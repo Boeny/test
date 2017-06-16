@@ -33,11 +33,13 @@ var edit_form = {
 		
 		if (!v) return 'Поле не должно быть пустым!';
 		
-		if ((f == 'publish_year' || f == 'page_count') && hasLiters(v))// from base/base.js
-			return 'Поле должно содержать только цифры!';
-		
-		if (f == 'publish_year' && v > (new Date()).getFullYear())
-			return 'Этот год еще не наступил!';
+		switch (f){
+			case 'publish_year':// negative year means B.C. date
+				return v > (new Date()).getFullYear() ? 'Этот год еще не наступил!' : null;
+			
+			case 'page_count':
+				return v > 0 ? null : 'Кол-во страниц должно быть положительным числом!';
+		}
 		
 		return null;
 	},

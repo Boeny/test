@@ -3,10 +3,12 @@
   "dependencies": {
     "less": "^2.7.2",
     "pug": "^2.0.0-rc.2",
+    "uglify-js": "^3.0.17",
+    "uglifycss": "0.0.27",
     "webpack": "^2.6.1"
   },
   "scripts": {
-    "build": "node build && webpack",
-	"devbuild": "node build --dev && webpack"
+    "build": "node build && webpack && uglifyjs public/bundle.js --compress --mangle --output public/bundle.js",
+    "devbuild": "node build --dev && webpack"
   }
 }

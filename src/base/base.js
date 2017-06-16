@@ -3,10 +3,6 @@ window.hideElement = function(elem, remove){
 	setTimeout(function(){elem[remove ? 'remove' : 'hide']()}, 300);
 };
 
-window.hasLiters = function(s){
-	return s.replace(/\d/g, '');
-};
-
 /**
  * поочередно выполняет функции в массиве (мигает ими)
  * @param {object} o параметры:
